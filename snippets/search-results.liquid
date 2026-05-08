@@ -1,0 +1,108 @@
+<div class="predictive-search__results">
+  {% if predictive_search.resources.products.size >= 1 %}
+    <div class="result-type__container">
+      <h4 class="result-type__header">Products</h4>
+      {% for product in predictive_search.resources.products %}
+        <div class="results-item">
+          <div class="results-item__wrapper">
+            <div class="product-result__image">
+              {{ product.featured_image | image_url: width: 100 | image_tag }}
+            </div>
+            <div class="product-result__content">
+              <h5 class="product-result__title">{{ product.title }}</h5>
+              <div class="product-result__prices">
+                <span class="product-result__price">{{ product.price | money }}</span>
+                <span class="product-result__compare-at-price">{{ product.compare_at_price | money }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if predictive_search.resources.collections.size >= 1 %}
+    <div class="result-type__container">
+      <h4 class="result-type__header">Collections</h4>
+      {% for collection in predictive_search.resources.collections %}
+        <div class="results-item">
+          <div class="results-item__wrapper">{{ collection.title }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if predictive_search.resources.pages.size >= 1 %}
+    <div class="result-type__container">
+      <h4 class="result-type__header">Pages</h4>
+      {% for page in predictive_search.resources.pages %}
+        <div class="results-item">
+          <div class="results-item__wrapper">{{ page.title }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if predictive_search.resources.articles.size >= 1 %}
+    <div class="result-type__container">
+      <h4 class="result-type__header">Articles</h4>
+      {% for article in predictive_search.resources.articles %}
+        <div class="results-item">
+          <div class="results-item__wrapper"></div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+ .predictive-search__results {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  max-width: 600px;
+  width: 100%;
+  max-height: 400px;
+  top: 120px;
+  border-radius: 1.2rem;
+  padding: 1.2rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  border: 1px solid rgb(213, 213, 213);
+  
+}
+
+.predictive-search__results[show]{
+  opacity: 1;
+}
+
+.product-result__image{
+  width: 50px;
+  height: 50px;
+}
+
+.product-result__image > img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.results-item__wrapper{
+  display: flex;
+  gap: 0.8rem;
+}
+
+.results-item{
+  padding: 0.8rem;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.results-item:hover{
+  background-color: rgb(233, 233, 233);
+}
+
+</style>

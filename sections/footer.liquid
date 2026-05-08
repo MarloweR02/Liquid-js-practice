@@ -1,0 +1,31 @@
+<div class="footer">
+  <div class="page-width footer__inner">
+    @MolecularDev
+  </div>
+</div>
+
+<style>
+  .footer{
+    background-color: {{ section.settings.bg_color }};
+    padding: 2rem 0;
+  }
+
+  .footer__inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    }
+  ]
+}
+{% endschema %}

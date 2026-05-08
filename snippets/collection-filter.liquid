@@ -1,0 +1,46 @@
+<collection-filter class="collection-filters" data-section-id="{{ section.id }}">
+  <h2>Filters</h2>
+  <div class="collection-filter__content">
+    {% for filter in collection.filters %}
+      <div class="collection-filter">
+        <h5 class="collection-filter__label">{{ filter.label }}</h5>
+        <div class="collection-filter__options">
+          {% for value in filter.values %}
+            <div class="collection-filter__option">
+             <input type="checkbox"
+             id="{{ filter.label }}-{{ value.value | handle }}"
+             name="{{ filter.label | handle }}"
+             value="{{ value.value | handle }}"
+             data-add-url="{{ value.url_to_add }}"
+             data-remove-url="{{ value.url_to_remove }}"
+             {% if value.active %}
+              checked
+             {% endif %}>
+             <label for="{{ filter.label }}-{{ value.value | handle }}">{{ value.label }}-({{ value.count }})</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</collection-filter>
+
+<style>
+  .collection-filters{
+    max-width: 250px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 2px solid rgb(225, 225, 225);
+    padding: 1.6rem;
+    border-radius: 0.8rem;
+    height: min-content;
+  }
+
+  .collection-filter__content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+</style>

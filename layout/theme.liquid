@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ content_for_header }}
+
+
+  {% render "fonts" %}
+  {% render "stylesheets" %}
+  {% render "theme-variables" %}
+</head>
+<body>
+  {% sections 'header-group' %}
+  {% section 'predictive-search' %}
+  
+  <main>
+    {{ content_for_layout }}
+  </main>
+  {% sections 'footer-group' %}
+  {% section 'cart-drawer' %}
+    
+  {% render "scripts" %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% style %}
+  {{ settings.body_font | font_face: font_display: "swap" }}
+  {{ settings.heading_font | font_face: font_display: "swap" }}
+  
+
+  :root{
+    --logo-width: {{ settings.logo_width | divided_by: 10.00 }}rem;
+    --page-width: {{ settings.page_width |  divided_by: 10.00 }}rem;
+
+    --body-font: {{ settings.body_font.family }};
+    --heading-font: {{ settings.heading_font.family }};
+
+    --heading-1-font-size: {{ settings.heading_1_font_size | divided_by: 10.00 }}rem;
+    --heading-1-line-height: {{ settings.heading_1_line_height | divided_by: 10.00 }}rem;
+    --heading-2-font-size: {{ settings.heading_2_font_size | divided_by: 10.00 }}rem;
+    --heading-2-line-height: {{ settings.heading_2_line_height | divided_by: 10.00 }}rem;
+    --heading-3-font-size: {{ settings.heading_3_font_size | divided_by: 10.00 }}rem;
+    --heading-3-line-height: {{ settings.heading_3_line_height | divided_by: 10.00 }}rem;
+    --heading-4-font-size: {{ settings.heading_4_font_size | divided_by: 10.00 }}rem;
+    --heading-4-line-height: {{ settings.heading_4_line_height | divided_by: 10.00 }}rem;
+    --heading-5-font-size: {{ settings.heading_5_font_size | divided_by: 10.00 }}rem;
+    --heading-5-line-height: {{ settings.heading_5_line_height | divided_by: 10.00 }}rem;
+    --heading-6-font-size: {{ settings.heading_6_font_size | divided_by: 10.00 }}rem;
+    --heading-6-line-height: {{ settings.heading_6_line_height | divided_by: 10.00 }}rem;
+
+    --body-font-size: {{ settings.body_font_size | divided_by: 10.00 }}rem;
+    --body-line-height: {{ settings.body_line_height | divided_by: 10.00 }}rem;
+  }
+{% endstyle %}

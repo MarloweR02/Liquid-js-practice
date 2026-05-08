@@ -1,0 +1,28 @@
+<card-atc class="card-atc" id="CardATC">
+  {% form 'product', product %}
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <input type="hidden" name="quantity" value="1">
+    <button>ADD TO CART</button>
+  {% endform %}
+</card-atc>
+
+<style>
+  #CardATC  button {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 0.8rem 0;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  #CardATC  button:hover {
+    transform: translateY(-2px);
+    background-color: rgb(37, 37, 37);
+    box-shadow: ;
+  }
+  </style>

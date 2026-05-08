@@ -1,0 +1,393 @@
+<cart-drawer id="CartDrawer">
+  <div class="cart-drawer__overlay"></div>
+  <div class="cart-drawer__main">
+    <div class="cart-drawer__header">
+      <h3>Shopping Cart({{ cart.item_count }})</h3>
+      <div class="svg-wrapper cart-close-trigger">{{ "icon-x-mark.svg" | inline_asset_content }}</div>
+    </div>
+    <div class="cart-drawer__body">
+      {% for item in cart.items %}
+        <cart-item class="cart-item" data-line="{{ forloop.index }}">
+          <div class="cart-item__image">{{ item.image | image_url: width: 400 |  image_tag  }}</div>
+          <div class="cart-item__content">
+            <span class="cart-item__title">{{ item.title }}</span>
+            <span class="cart-item__quantity">total:{{ item.quantity }}</span>
+            <div class="cart-item__prices-container">
+              <span class="cart-item__price">{{ item.price | money }}</span>
+              <span class="cart-item__compare-at-price">{{ item.compare_at_price | money }}</span>
+            </div>
+          </div>
+
+
+          <div class="cart-item__actions">
+            <div class="cart-item__quantity-selector">
+              <button class="cart-item__quantity-selector__minus" data-minus data-quantity="{{ item.quantity | minus: 1 }}">
+                <div class="svg-wrapper">{{ "icon-minus.svg" | inline_asset_content }}</div>
+              </button>
+              <input type="number" min="1" value="{{ item.quantity }}" max="{{ item.variant.inventory_quantity  }}" class="cart-item__quantity-selector__quantity">
+              <button class="cart-item__quantity-selector__plus" data-plus data-quantity="{{ item.quantity | plus: 1 }}">
+                <div class="svg-wrapper">{{ "icon-plus.svg" | inline_asset_content }}</div>
+              </button>
+            </div>
+            <button class="cart-item__quantity-selector__remove" data-remove data-quantity="0">remove</button>
+          </div>
+
+
+        </cart-item>
+      {% endfor %}
+    </div>
+    <drawer-actions class="cart-drawer__actions" >
+      <div class="message-container">
+        <input type="text" class="message__input" placeholder="Enter Message">
+        <button class="message__save-btn">Save</button>
+      </div>
+      <div class="coupon-code__container">
+        <div class="coupon-codes">
+          {% for discount in cart.discount_applications %}
+            <span class="coupon-code" data-coupon-code="{{ discount.title }}">{{ discount.title }}
+              <div class="remove-coupon-code">
+                {{ "icon-x-mark.svg" | inline_asset_content }}
+              </div>
+            </span>
+          {% endfor %}
+        </div>
+        <div class="coupon-code-form">
+          <input type="text" placeholder="Coupon Code" class="coupon-code__field">
+          <button class="coupon-code__submit">Check</button>
+        </div>
+      </div>
+      {% comment %} <div class="message__container">dsa</div> {% endcomment %}
+      <div class="cart-drawer__coupon-code">Coupon Code</div>
+      <div class="cart-drawer__message">Message</div>
+    </drawer-actions>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total-container">
+        <h4 class="cart-drawer__total-text">Estimated total:</h4>
+        <span class="cart-drawer__total-price">{{ cart.total_price | money }}</span>
+        {% render "loading" %}
+      </div>
+      <a href="/checkout" class="cart-drawer__checkout"><button>Checkout</button></a>
+    </div>
+  </div>
+</cart-drawer>
+
+<style>
+  .cart-drawer__overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  cart-drawer[open] .cart-drawer__overlay{
+    opacity: 0.8;
+    pointer-events: all;
+  }
+  
+  .cart-drawer__main{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    max-width: 360px;
+    width: 100%;
+    background-color: white;
+    height: 100vh;
+    z-index: 999;
+    transition: right 0.3s ease;
+    display: flex;
+   flex-direction: column;
+  }
+  cart-drawer[open] .cart-drawer__main{
+    right: 0;
+  }
+
+  .cart-drawer__header{
+    display: flex;
+    padding: 2rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-drawer__body{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .cart-item__image{
+    width: 100px;
+    height: 100px;
+  }
+  .cart-item__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .cart-item__content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+  }
+
+  .cart-item{
+    display: flex;
+    gap: 1rem;
+  }
+
+  .cart-item__quantity{
+    flex: 1;
+  }
+
+  .cart-item__price{
+    color: rgb(164, 164, 164);
+  }
+
+  .cart-drawer__footer{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.2rem;
+    z-index: 999;
+  }
+
+  .cart-drawer__total-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-drawer__checkout > button{
+    background-color: black;
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 100px;
+    padding: 1.2rem 0;
+  }
+
+  .cart-item__quantity-selector{
+    display: flex;
+  }
+
+  .cart-item__quantity-selector__quantity{
+    width: 30px;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"] {
+   text-align: center;
+  }
+
+  .cart-item__actions{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .cart-item__quantity-selector__remove{
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 0.4rem 0;
+    border-radius: 0.4rem;
+    border: none;
+  }
+
+  .cart-item__quantity-selector__plus, .cart-item__quantity-selector__minus{
+    background-color: transparent;
+  }
+
+  .cart-item__quantity-selector__plus{
+    border-left: none !important;
+    border: 1px solid black;
+  }
+  .cart-item__quantity-selector__minus{
+    border-right: none !important;
+    border: 1px solid black;
+  }
+
+  input[type="number"]{
+    border: none;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  .cart-drawer__actions{
+    display: flex;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+
+  .cart-drawer__coupon-code, .cart-drawer__message{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 800;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  .cart-drawer__coupon-code{
+    border-right: 2px solid black;
+  }
+
+  drawer-actions[message] .cart-drawer__message{
+    background-color: black;
+    color: white;
+  }
+
+  drawer-actions[code] .cart-drawer__coupon-code{
+    background-color: black;
+    color: white;
+  }
+
+  .cart-drawer__coupon-code:hover{
+    background-color: rgb(239, 239, 239);
+  }
+  .cart-drawer__message:hover{
+    background-color: rgb(239, 239, 239);
+  }
+  
+  .cart-drawer__actions{
+    position: relative;
+  }
+
+  
+  /* .coupon-code__container .message__container{ */
+  .coupon-code__container{
+   position: absolute;
+   left: 0;
+   bottom: 100%;
+   background-color: white;
+   display: flex;flex-direction: column;
+   gap: 0.8rem;
+   width: 100%;
+   /* opacity: 0; */
+   max-height: 0;
+   transition: all 0.3s ease;
+   padding: 0 2rem;
+   overflow: hidden;
+  }
+  
+  /* OPEN STATE */
+  drawer-actions[code] > .coupon-code__container{
+    /* opacity: 1; */
+    max-height: 19rem;
+    padding: 2rem;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  
+
+
+
+
+  .coupon-code__container input{
+    width: 100%;
+    outline: none;
+    padding: 0 1rem;
+  }
+
+  .coupon-code__container input::placeholder{
+    padding: 0 1rem;
+  }
+  .coupon-code__container button{
+    background-color: white;
+    border: 2px solid black;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .coupon-code-form{
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .remove-coupon-code{
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+  }
+  .remove-coupon-code > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .coupon-code{
+    display: flex;
+    gap: 0.4rem;  
+    align-items: center;
+    font-size: 12px;
+    line-height: 1;
+    border: 1px solid black;
+    padding: 0.4rem;
+    width: fit-content;
+    border-radius: 0.4rem;
+  }
+
+  .coupon-codes{
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .message-container{
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 0 2rem;
+    border-top: 2px solid black;
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    display: flex;
+    gap: 0.8rem;
+  }
+  .message-container > button {
+    background-color: white;
+    border: 2px solid black;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .message-container > input {
+    width: 100%;
+    outline: none;
+    padding: 0 1rem;
+  }
+
+  drawer-actions[message] .message-container{
+    max-height: 9rem;
+    padding: 2rem;
+    border-bottom: 2px solid black;
+
+  } 
+</style>

@@ -1,0 +1,85 @@
+<div class="header">
+  <div class="page-width header__inner">
+    <div class="header__left">
+      <div class="header__logo">
+        <a href="{{ routes.root_url }}">
+          {% if settings.logo != blank %}
+          {{ settings.logo |  image_url: width: settings.logo_width | image_tag  }}
+        {% else %}
+          <h2>{{ shop.name }}</h2>
+        {% endif %}
+        </a>
+      </div>
+      {% if section.settings.menu.links != blank %}
+      <ul class="header__menus">
+        {% for link in section.settings.menu.links %}
+          <li class="header__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul> 
+      {% endif %}
+    </div>
+    <div class="header__right">
+      <div class="svg-wrapper search-open-trigger">{{ "icon-magnifying-glass.svg" | inline_asset_content }}</div>
+      <div class="svg-wrapper">{{ "icon-user.svg" | inline_asset_content }}</div>
+      <div class="svg-wrapper cart-open-trigger">{% render "cart-count" %}{{ "icon-shopping-cart.svg" | inline_asset_content }}</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header{
+    padding: 1.2rem 0;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .cart-open-trigger{
+    position: relative;
+  }
+
+  .header__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header__left{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .header__menus{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .header__menu-item > a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .header__right{
+    display: flex;
+    gap: 0.8rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default":"main-menu"
+    }
+  ]
+}
+{% endschema %}

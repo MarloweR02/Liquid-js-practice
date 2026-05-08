@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#000000",
+        "hero_title": "Skeleton Theme"
+      }
+    },
+    "featured_collection_Vm6Fnq": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "description": "from multiple supplier across the world offers tons of variaty of products",
+        "collection": "frontpage"
+      }
+    },
+    "featured_collection_jJDnBQ": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "",
+        "description": "",
+        "collection": "fruit"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection_Vm6Fnq",
+    "featured_collection_jJDnBQ"
+  ]
+}

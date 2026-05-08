@@ -1,0 +1,36 @@
+<div class="product-card">
+  <div class="product-card__image">
+    {{ product.featured_image | image_url: width: 500 | image_tag }}
+  </div>
+  <div class="product-card__content">
+    <h2 class="product-card__title"> {{ product.title }}</h2>
+    <div class="product-card__prices-container">
+      <span class="product-card__price">{{ product.price | money}}</span>
+      <span class="product-card__compare-at-price">{{ product.compare_at_price | money }}</span>
+    </div>
+    {% render "card-atc" product:product %}
+  </div>
+</div>
+
+<style>
+  .product-card{
+    border: 1px solid rgb(218, 218, 218);
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    transition: all 0.3s ease;
+  }
+  .product-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  .product-card__image{
+    width: 100%;
+    height: auto;
+  }
+  .product-card__image > img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+</style>

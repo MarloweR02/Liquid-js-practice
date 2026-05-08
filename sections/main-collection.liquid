@@ -1,0 +1,133 @@
+<div class="main-collection">
+  <div class="main-collection__wrapper page-width">
+    {% render "collection-filter" %}
+    <div class="collection-wrapper">
+      <div class="collection-header">
+        <p>total products: {{ collection.products.size }}</p>
+        {% render "sort-by", collection: collection %}
+      </div>
+      {% paginate collection.products by 9 %}
+        <div class="collection-body">
+          {% for product in collection.products %}
+            {% render 'product-card' product:product %}
+          {% endfor %}
+        </div>
+        <collection-pagination class="collection-pagination" data-section-id="{{ section.id }}">
+          <ul class="pagination-items">
+            {% if paginate.previous %}
+              <li class="pagination-item">
+                <a href="{{ paginate.previous.url }}" class="pagination-link">{{ paginate.previous.title }}</a>
+              </li>
+            {% endif %}
+            {% for part in paginate.parts %}
+              {% if part.is_link %}
+                <li class="pagination-item">
+                  <a href="{{ part.url }}" class="pagination-link">{{ part.title }}</a>
+                </li>
+              {% else %}
+                <li class="pagination-not-link"
+                {% if part.title == paginate.current_page %}
+                  active
+                {% endif %}
+                >{{ part.title }}</li>
+              {% endif %}
+            {% endfor %}
+            {% if paginate.next %}
+              <li class="pagination-item">
+                <a href="{{ paginate.next.url }}" class="pagination-link">{{ paginate.next.title }}</a>
+              </li>
+            {% endif %}
+          </ul>
+        </collection-pagination>
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .main-collection__wrapper{
+    display: flex;
+    gap: 2rem;
+  }
+
+
+  .main-collection{
+    padding: 6rem 0;
+  }
+
+  .collection-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .collection-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .collection-body{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .collection-pagination{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .pagination-items{
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+  }
+  .pagination-items > li > a{
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pagination-item > a{
+    border: 1px solid black;
+    padding: 0.4rem 0.8rem;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .pagination-item > a:hover{
+    background-color: black;
+    color: white;
+  }
+
+  .pagination-not-link{
+    border: 1px solid black;
+    padding: 0.4rem 0.8rem;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pagination-not-link[active]{
+    background-color: black;
+    color: white;
+  }
+  
+</style>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    
+    ]
+}
+{% endschema %}

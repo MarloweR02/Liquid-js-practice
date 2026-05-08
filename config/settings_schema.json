@@ -1,0 +1,486 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dawn",
+    "theme_author": "Shopify",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes\/os20\/themes-by-shopify\/dawn",
+    "theme_support_url": "https:\/\/support.shopify.com\/",
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width",
+        "min": 100,
+        "max": 300,
+        "step": 10,
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "min": 1000,
+        "max": 2000,
+        "default":1200,
+        "step": 100
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "mono"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body font",
+        "default": "mono"
+      },
+      {
+        "type": "header",
+        "content": "Heading 1"
+      },
+      {
+        "type": "number",
+        "id": "heading_1_font_size",
+        "label": "Font size",
+        "default": 40,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_1_line_height",
+        "label": "Line height",
+        "default": 48,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Heading 2"
+      },
+      {
+        "type": "number",
+        "id": "heading_2_font_size",
+        "label": "Font size",
+        "default": 32,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_2_line_height",
+        "label": "Line height",
+        "default": 40,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Heading 3"
+      },
+      {
+        "type": "number",
+        "id": "heading_3_font_size",
+        "label": "Font size",
+        "default": 24,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_3_line_height",
+        "label": "Line height",
+        "default": 32,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Heading 4"
+      },
+      {
+        "type": "number",
+        "id": "heading_4_font_size",
+        "label": "Font size",
+        "default": 20,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_4_line_height",
+        "label": "Line height",
+        "default": 28,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Heading 5"
+      },
+      {
+        "type": "number",
+        "id": "heading_5_font_size",
+        "label": "Font size",
+        "default": 18,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_5_line_height",
+        "label": "Line height",
+        "default": 26,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Heading 6"
+      },
+      {
+        "type": "number",
+        "id": "heading_6_font_size",
+        "label": "Font size",
+        "default": 16,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_6_line_height",
+        "label": "Line height",
+        "default": 24,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Body"
+      },
+      {
+        "type": "number",
+        "id": "body_font_size",
+        "label": "Font size",
+        "default": 16,
+        "info": "px"
+      },
+      {
+        "type": "range",
+        "id": "body_line_height",
+        "label": "Line height",
+        "default": 24,
+        "min": 16,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Media queries",
+    "settings": [
+      {
+        "type": "text",
+        "id": "mobile_breakpoint",
+        "label": "Mobile Breakpoint",
+        "default": "768",
+        "info": "e.g 768px"
+      },
+      {
+        "type": "text",
+        "id": "tablet_breakpoint",
+        "label": "Tablet Breakpoint",
+        "default": "1024",
+        "info": "e.g 1024px"
+      }
+    ]
+  },
+  {
+    "name": "Buttons",
+    "settings": [
+      {
+        "type": "color",
+        "id": "button_color",
+        "label": "Button color"
+      }
+    ]
+  },
+  {
+    "name": "Collection card",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Border"
+      },
+      {
+        "type": "color",
+        "id": "collection_card_border_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "collection_card_border_width",
+        "label": "Width",
+        "default": 1,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "collection_card_border_style",
+        "label": "Style",
+        "default": "solid",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          
+        ]
+      },
+      {
+        "type": "range",
+        "id": "collection_card_border_radius",
+        "label": "Radius",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Product card",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Border"
+      },
+      {
+        "type": "color",
+        "id": "product_card_border_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "product_card_border_width",
+        "label": "Width",
+        "default": 1,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "product_card_border_style",
+        "label": "Style",
+        "default": "solid",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          
+        ]
+      },
+      {
+        "type": "range",
+        "id": "product_card_border_radius",
+        "label": "Radius",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Blog card",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Border"
+      },
+      {
+        "type": "color",
+        "id": "blog_card_border_color",
+        "label": "Color",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "blog_card_border_width",
+        "label": "Width",
+        "default": 1,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "blog_card_border_style",
+        "label": "Style",
+        "default": "solid",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Solid"
+          },
+          {
+            "value": "dashed",
+            "label": "Dashed"
+          },
+          {
+            "value": "dotted",
+            "label": "Dotted"
+          },
+          
+        ]
+      },
+      {
+        "type": "range",
+        "id": "blog_card_border_radius",
+        "label": "Radius",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Links"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook"
+      },
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter"
+      },
+      {
+        "type": "url",
+        "id": "youtube_url",
+        "label": "Youtube"
+      },
+      {
+        "type": "url",
+        "id": "linkedin_url",
+        "label": "Linkedin"
+      },
+      {
+        "type": "url",
+        "id": "pinterest_url",
+        "label": "Pinterest"
+      },
+      {
+        "type": "url",
+        "id": "tiktok_url",
+        "label": "Tiktok"
+      },
+      {
+        "type": "url",
+        "id": "snapchat_url",
+        "label": "Snapchat"
+      },
+      {
+        "type": "url",
+        "id": "reddit_url",
+        "label": "Reddit"
+      }
+    ]
+  },
+  {
+    "name": "Search behavior",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "search_show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_price",
+        "label": "Show price",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "search_show_latest_searches",
+        "label": "Show latest searches",
+        "default": false
+      }  
+    ]
+  }
+]
