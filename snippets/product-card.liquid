@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card fade-in-up">
   <div class="product-card__image">
     {{ product.featured_image | image_url: width: 500 | image_tag }}
   </div>
@@ -17,12 +17,8 @@
     border: 1px solid rgb(218, 218, 218);
     padding: 1.5rem;
     border-radius: 0.8rem;
-    transition: all 0.3s ease;
   }
-  .product-card:hover{
-    transform: translateY(-4px);
-    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
-  }
+
 
   .product-card__image{
     width: 100%;
