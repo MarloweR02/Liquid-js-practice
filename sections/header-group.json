@@ -11,6 +11,46 @@
   "type": "header",
   "name": "Header Group",
   "sections": {
+    "announcement_bar_NVd7FM": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_BqtBhE": {
+          "type": "announcement",
+          "settings": {
+            "announcement": "I'll make sure to find a job this month"
+          }
+        },
+        "announcement_anzpJA": {
+          "type": "announcement",
+          "settings": {
+            "announcement": "Marlowe is the best developer"
+          }
+        },
+        "announcement_fGHLP6": {
+          "type": "announcement",
+          "settings": {
+            "announcement": "Marlowe will study everyday"
+          }
+        },
+        "announcement_NVwKNe": {
+          "type": "announcement",
+          "settings": {
+            "announcement": "the best way to learn is to develop stuff"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_BqtBhE",
+        "announcement_anzpJA",
+        "announcement_fGHLP6",
+        "announcement_NVwKNe"
+      ],
+      "name": "Announcement bar",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff"
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -20,6 +60,7 @@
     }
   },
   "order": [
+    "announcement_bar_NVd7FM",
     "header"
   ]
 }
