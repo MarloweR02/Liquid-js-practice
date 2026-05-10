@@ -1,23 +1,23 @@
 function initAnimation(){
-  const fadeInUp = document.querySelectorAll('.fade-in-up')
+  const fadeInUpEl = document.querySelectorAll('.fade-in-up')
 
   const observer = new IntersectionObserver((entries, observer)=>{
     entries.forEach((entry, index)=>{
       if(entry.isIntersecting){
         entry.target.classList.add('animate')
-        observer.unobserve(entry.target)
         entry.target.style.animationDelay = `${index * 100}ms`
+        observer.unobserve(entry.target)
+
       }
     })
   },
   {
-    threshold: 0.5
-  }
-  )
+    threshold: 0.2
+  })
 
-  fadeInUp.forEach((el)=>{
+  fadeInUpEl.forEach((el)=>{
     observer.observe(el)
   })
 }
 
-window.initAnimation
+initAnimation()
