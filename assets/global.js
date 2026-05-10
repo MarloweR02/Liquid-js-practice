@@ -89,6 +89,9 @@ class CollectionFilter extends HTMLElement{
 
       url.searchParams.delete('section_id')
       window.history.pushState({},"",url.toString())
+
+      // function for animation refer: animation.js
+      initAnimation()
     })
     .catch((err)=>{
       console.error("Collection filter is not working", err)
@@ -139,6 +142,9 @@ class CollectionPagination extends HTMLElement{
       this.collection.innerHTML = fakeDiv.querySelector('.main-collection').innerHTML
 
       this.updateURL(url)
+
+      // function for animation refer: animation.js
+      initAnimation()
      })
      .catch((err)=>{
       console.error("Pagination is now working!", err)
@@ -193,6 +199,9 @@ class SortBy extends HTMLElement{
         fakeDiv.innerHTML = data
   
         this.collection.innerHTML = fakeDiv.querySelector('.main-collection').innerHTML
+
+        // function for animation refer: animation.js
+        initAnimation()
       })
       .catch((err)=>{
         console.error("SortBy is not working", err)
