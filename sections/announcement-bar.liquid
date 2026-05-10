@@ -1,0 +1,140 @@
+<script src={{ "announcement-bar.js" |  asset_url }} defer></script>
+
+<announcement-bar class="announcement-bar">
+  <div class="announcement-bar__wrapper page-width">
+    <div class="announcement-bar__container">
+      <div class="announcement-navigation" previous-slide>
+        {{ "icon-chevron-left.svg" | inline_asset_content }}
+      </div>
+      <div class="announcement-container">
+        <div class="announcement-carousel">
+          {% for block in section.blocks %}
+            <div class="announcement-message"> {{ block.settings.announcement }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    <div class="announcement-navigation" next-slide>
+      {{ "icon-chevron-right.svg" | inline_asset_content }}
+    </div>
+    </div>
+    <div class="announcement-bar__close" close-trigger>
+      {{ "icon-x-mark.svg" | inline_asset_content }}
+    </div>
+  </div>
+</announcement-bar>
+
+<style>
+  .announcement-bar{
+    display: block;
+    padding: 0.4rem 0.8rem;
+    max-height: 200px;
+    transition: all 0.3s ease;
+    background-color: {{ section.settings.bg_color }};
+    
+  }
+  .announcement-bar.is-closing{
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .announcement-bar__wrapper{
+    display: flex;
+    align-items: center;
+  }
+
+  .announcement-message{
+    flex: 0 0 100%;
+    text-align: center;
+    user-select: none;
+    color: {{ section.settings.text_color }};
+  }
+
+
+  .announcement-container{
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .announcement-carousel{
+    width: 100%;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .announcement-navigation{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  .announcement-navigation > svg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    color: {{ section.settings.text_color }};
+  }
+  
+  .announcement-bar__container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+  
+  .announcement-bar__close{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .announcement-bar__close > svg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    color: {{ section.settings.text_color }};
+  }
+  .announcement-bar__close:hover{
+    transform: rotate(90deg);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "announcement",
+          "label": "Announcement",
+          "default":"Get 50% off on your 1st purchase!"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar"
+    }
+  ]
+}
+{% endschema %}
