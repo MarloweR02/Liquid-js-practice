@@ -16,9 +16,7 @@ class AnnouncementBar extends HTMLElement{
     this.previous.addEventListener("click", this.previousSlide.bind(this))
     this.closeTrigger.addEventListener('click', this.handleClose.bind(this))
 
-    setInterval(() => {
-      this.nextSlide()
-    }, 3500);
+   this.startSlide()
   }
 
   nextSlide(){
@@ -29,6 +27,7 @@ class AnnouncementBar extends HTMLElement{
     }
 
     this.updateSlide()
+    this.resetInterval()
   } 
 
   previousSlide(){
@@ -39,6 +38,7 @@ class AnnouncementBar extends HTMLElement{
     }
 
     this.updateSlide()
+    this.resetInterval()
   }
 
   updateSlide(){
@@ -49,6 +49,18 @@ class AnnouncementBar extends HTMLElement{
   handleClose(){
     this.classList.add('is-closing')
   }
+
+  startSlide(){
+    this.interval = setInterval(() => {
+      this.nextSlide()
+    }, 3500)
+  }
+
+  resetInterval(){
+    clearInterval(this.interval)
+    this.startSlide()
+  }
+
 
   disconnectedCallback(){}
 }
