@@ -11,10 +11,33 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "disabled": true,
+      "blocks": {
+        "heading_FG9Kc3": {
+          "type": "heading",
+          "settings": {
+            "title": "Discover Your Everyday Essentials"
+          }
+        },
+        "description_cLFHTq": {
+          "type": "description",
+          "settings": {
+            "description": "Shop high-quality products designed for comfort, style, and everyday living. Find what you need, all in one place."
+          }
+        },
+        "button_nMcfDV": {
+          "type": "button",
+          "settings": {
+            "btn_title": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FG9Kc3",
+        "description_cLFHTq",
+        "button_nMcfDV"
+      ],
       "settings": {
-        "bg_color": "#000000",
-        "hero_title": "Skeleton Theme"
+        "bg_image": "shopify://shop_images/a-frame-wood-cabin-in-forest.jpg"
       }
     },
     "featured_collection_Vm6Fnq": {
