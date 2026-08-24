@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "featured_collection_list_UbpqHk": {
+      "type": "featured-collection-list",
+      "name": "Featured collection list",
+      "settings": {
+        "title": "Shop Our Fresh Selection",
+        "description": "Explore our carefully selected range of fresh meat, seafood, and vegetables.",
+        "collection": [
+          "meat",
+          "vegerables",
+          "fish"
+        ]
+      }
+    },
     "featured_collection_Vm6Fnq": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -20,6 +33,7 @@
     }
   },
   "order": [
+    "featured_collection_list_UbpqHk",
     "featured_collection_Vm6Fnq"
   ]
 }
