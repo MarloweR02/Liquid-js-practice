@@ -9,37 +9,6 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "hero",
-      "blocks": {
-        "heading_FG9Kc3": {
-          "type": "heading",
-          "settings": {
-            "title": "Discover Your Everyday Essentials"
-          }
-        },
-        "description_cLFHTq": {
-          "type": "description",
-          "settings": {
-            "description": "Shop high-quality products designed for comfort, style, and everyday living. Find what you need, all in one place."
-          }
-        },
-        "button_nMcfDV": {
-          "type": "button",
-          "settings": {
-            "btn_title": "Shop Now"
-          }
-        }
-      },
-      "block_order": [
-        "heading_FG9Kc3",
-        "description_cLFHTq",
-        "button_nMcfDV"
-      ],
-      "settings": {
-        "bg_image": "shopify://shop_images/a-frame-wood-cabin-in-forest.jpg"
-      }
-    },
     "featured_collection_Vm6Fnq": {
       "type": "featured-collection",
       "name": "Featured collection",
@@ -48,20 +17,9 @@
         "description": "from multiple supplier across the world offers tons of variaty of products",
         "collection": "frontpage"
       }
-    },
-    "featured_collection_jJDnBQ": {
-      "type": "featured-collection",
-      "name": "Featured collection",
-      "settings": {
-        "title": "",
-        "description": "",
-        "collection": "fruit"
-      }
     }
   },
   "order": [
-    "hero",
-    "featured_collection_Vm6Fnq",
-    "featured_collection_jJDnBQ"
+    "featured_collection_Vm6Fnq"
   ]
 }
