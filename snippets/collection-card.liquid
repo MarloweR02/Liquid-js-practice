@@ -1,0 +1,15 @@
+<div class="collection-card">
+  {{ collection.featured_image |image_url: width: 700 |  image_tag }}
+</div>
+
+<style>
+  .collection-card{
+    aspect-ratio: 1/1;
+  }
+  .collection-card > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+</style>

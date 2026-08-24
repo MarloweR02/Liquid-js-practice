@@ -1,0 +1,60 @@
+<div class="featured-collection-list">
+  <div class="page-width featured-collection-list__wrapper">
+    <div class="featured-collection-list__header">
+      <h2 class="featured-collection-list__title">{{ section.settings.title }}</h2>
+      <p class="featured-collection-list__description">{{ section.settings.description }}</p>
+    </div>
+    <div class="featured-collection-list__body">
+      {% for collection in section.settings.collection%}
+        {% render 'collection-card', collection:collection %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .featured-collection-list{
+    padding: 6rem 0;
+  }
+  .featured-collection-list__header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.6rem;
+  }
+  .featured-collection-list__body{
+    display: grid;
+    margin-top: 4rem;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured collection list",
+  "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default":"Shop Our Fresh Selection"
+      }, {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Description",
+        "default":"Explore our carefully selected range of fresh meat, seafood, and vegetables."
+      }, {
+        "type": "collection_list",
+        "id": "collection",
+        "label": "Collection",
+        "limit": 3
+      }
+    ],
+  "presets": [
+    {
+      "name": "Featured collection list"
+    }
+  ]
+}
+{% endschema %}
