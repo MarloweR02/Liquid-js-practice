@@ -13,10 +13,7 @@
   "sections": {
     "header": {
       "type": "header",
-      "settings": {
-        "bg_color": "#f4f4f4",
-        "menu": "main-menu"
-      }
+      "settings": {}
     }
   },
   "order": [
