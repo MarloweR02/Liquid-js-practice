@@ -1,0 +1,35 @@
+<div class="product-card">
+  <div class="product-card__image">{{ product.featured_image | image_url: width: 700 | image_tag }}</div>
+  <div class="product-card__content">
+    <a class="product-card__title" href="{{ product.url }}">{{ product.title }}</a>
+    <div class="product-card__price">
+      <span class="product-card__sale">{{ product.price | money }}</span>
+      <span class="product-card__original">{{ product.compare_at_price | money }}</span>
+    </div>
+    {% render 'card-atc', product: product %}
+  </div>
+</div>
+
+<style>
+  .product-card {
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 1rem;    
+  }
+  .product-card__image {
+    aspect-ratio: 1 / 1;
+  }
+
+  .product-card__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-card__title {
+    color: inherit;
+    text-decoration: none;
+    font-size: 2.4rem;
+  }
+</style>

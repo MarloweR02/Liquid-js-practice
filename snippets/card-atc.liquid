@@ -1,0 +1,21 @@
+{% form 'product', product %}
+  <input type="hidden" name="quantity" value="1">
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant }}">
+  <button class="cart-atc">
+    ADD TO CART
+  </button>
+{% endform %}
+
+<style>
+  .cart-atc{
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: .4rem;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+</style>
