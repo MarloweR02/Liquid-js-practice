@@ -1,99 +1,74 @@
 <div class="header">
-  <div class="page-width header__inner">
+  <div class="page-width header__wrapper">
     <div class="header__left">
-      <div class="header__logo">
-        <a href="{{ routes.root_url }}">
-          {% if settings.logo != blank %}
-          {{ settings.logo |  image_url: width: settings.logo_width | image_tag  }}
-        {% else %}
-          <h2>{{ shop.name }}</h2>
-        {% endif %}
-        </a>
-      </div>
-      {% if section.settings.menu.links != blank %}
-      <ul class="header__menus">
-        {% for link in section.settings.menu.links %}
-          <li class="header__menu-item"><a href="{{ link.url }}">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul> 
+      {% if settings.image_picker != blank %}
+        <div class="header__logo">
+          {{ settings.image_picker | image_url: width: 700 | image_tag }}
+        </div>
+      {% else %}
+        <h1 class="header__logo-name">{{ shop.name }}</h1>
+      {% endif %}
+      {% if section.settings.menu != blank %}
+        <ul class="header__nav">
+          {% for link in section.settings.menu.links %}
+            <li class="header__nav-item">{{ link.title }}</li>
+          {% endfor %}
+        </ul>
       {% endif %}
     </div>
     <div class="header__right">
-      {% if localization.available_countries.size > 1 %}
-        {% form 'localization' %}
-          <select name="country_code" onchange="this.form.submit()">
-            {% for country in localization.available_countries %}
-              <option
-                value="{{ country.iso_code }}"
-                {% if country.iso_code == localization.country.iso_code %}selected{% endif %}
-              >
-                {{ country.name }} ({{ country.currency.iso_code }})
-              </option>
-            {% endfor %}
-          </select>
-        {% endform %}
-      {% endif %}
-      <div class="svg-wrapper search-open-trigger">{{ "icon-magnifying-glass.svg" | inline_asset_content }}</div>
-      <div class="svg-wrapper">{{ "icon-user.svg" | inline_asset_content }}</div>
-      <div class="svg-wrapper cart-open-trigger">{% render "cart-count" %}{{ "icon-shopping-cart.svg" | inline_asset_content }}</div>
+      <div class="header__search svg-wrapper">{{ "icon-search.svg" | inline_asset_content }}</div>
+      <div class="header__user svg-wrapper">{{ "icon-user.svg" | inline_asset_content }}</div>
+      <div class="header__cart  svg-wrapper">{{ "icon-shopping-cart.svg" | inline_asset_content }}</div>
     </div>
   </div>
 </div>
 
 <style>
   .header{
-    padding: 1.2rem 0;
-    background-color: {{ section.settings.bg_color }};
+    padding: 1rem 0;
   }
-
-  .cart-open-trigger{
-    position: relative;
-  }
-
-  .header__inner{
+  .header__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .header__left{
+  .header__left {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
+  }
+  .header__right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
   }
 
-  .header__menus{
+  .header__nav {
+    display: flex;
     list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .header__menu-item > a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .header__right{
-    display: flex;
-    gap: 0.8rem;
+    gap: 1.2rem;
   }
 </style>
 
 {% schema %}
-{
-  "name": "Header",
-  "settings": [
-    {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Main menu",
-      "default":"main-menu"
-    }
-  ]
-}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Header"
+      }
+    ]
+  }
 {% endschema %}

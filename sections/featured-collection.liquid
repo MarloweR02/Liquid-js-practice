@@ -1,0 +1,36 @@
+<div class="featured-collection">
+  <div class="page-width featured-collection">
+    <div class="featured-collection__header">
+      <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+      <p class="featured-collection__description">{{ section.settings.description }}</p>
+    </div>
+    <div class="featured-collection__body"></div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }, {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Description"
+      }, {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection"
+      }
+    ]
+  }
+{% endschema %}
