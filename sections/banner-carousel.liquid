@@ -1,0 +1,110 @@
+<script src={{ "banner-carousel.js" |  asset_url }} defer></script>
+
+<banner-carousel class="banner-carousel">
+  <div class="page-width banner-carousel__wrapper">
+    <div class="banner-carousel__header">
+      <h2 class="banner-carousel__title"></h2>
+      <p class="banner-carousel__description"></p>
+    </div>
+    <div class="banner-carousel__container">
+      <button class="banner-carousel__nav-left carousel-nav"></button>
+      <div class="banner-carousel__track">
+        {% for block in section.blocks %}
+          {% render 'banner-slide', block:block.settings %}
+        {% endfor %}
+      </div>
+      <button class="banner-carousel__nav-right carousel-nav"></button>
+    </div>
+  </div>
+</banner-carousel>
+
+<style>
+  .banner-carousel{
+    padding: 6rem 0;
+    display: block;
+  }
+
+  .banner-carousel__container{
+    height: 600px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    position: relative;
+  }
+
+  .banner-carousel__track{
+    display: flex;
+    height: 100%;
+  }
+
+  .carousel-nav{
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    border: none;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    transition: transform .3s ease;
+  }
+
+  .carousel-nav:hover{
+    transform: translateY(-4px);
+  }
+
+  .banner-carousel__nav-left{
+    left: 30px;
+  }
+  .banner-carousel__nav-right{
+    right: 30px;
+  }
+</style>
+
+
+
+{% schema %}
+{
+  "name": "Banner carousel",
+  "settings": [],
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "Slide",
+      "name": "slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background image"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background color"
+        },
+        {
+          "type": "header",
+          "content":"Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Featured Collections"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "Explore our featured collections"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner carousel"
+    }
+  ]
+}
+{% endschema %}
