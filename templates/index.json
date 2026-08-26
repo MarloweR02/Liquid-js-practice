@@ -9,6 +9,42 @@
  */
 {
   "sections": {
+    "banner_carousel_ifRGG3": {
+      "type": "banner-carousel",
+      "blocks": {
+        "slide_ghVVqg": {
+          "type": "Slide",
+          "settings": {
+            "bg_color": "#DE6262",
+            "title": "Featured Collections",
+            "description": "Explore our featured collections"
+          }
+        },
+        "slide_kyPXzp": {
+          "type": "Slide",
+          "settings": {
+            "bg_color": "#5FCF7E",
+            "title": "Featured Collections",
+            "description": "Explore our featured collections"
+          }
+        },
+        "slide_jRiKzY": {
+          "type": "Slide",
+          "settings": {
+            "bg_color": "#6152BD",
+            "title": "Featured Collections",
+            "description": "Explore our featured collections"
+          }
+        }
+      },
+      "block_order": [
+        "slide_ghVVqg",
+        "slide_kyPXzp",
+        "slide_jRiKzY"
+      ],
+      "name": "Banner carousel",
+      "settings": {}
+    },
     "featured_collection_list_UbpqHk": {
       "type": "featured-collection-list",
       "name": "Featured collection list",
@@ -33,6 +69,7 @@
     }
   },
   "order": [
+    "banner_carousel_ifRGG3",
     "featured_collection_list_UbpqHk",
     "featured_collection_Vm6Fnq"
   ]
