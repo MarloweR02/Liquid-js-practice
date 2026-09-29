@@ -1,7 +1,66 @@
+<div class="featured-collection-list">
+  <div class="featured-collection-list__wrapper page-width">
+    <div class="featured-collection-list__header">
+      <h2 class="featured-collection-list__title">{{ section.settings.title }}</h2>
+      <p class="featured-collection-list__description">{{ section.settings.description }}</p>
+    </div>
+    <div class="featured-collection-list__content">
+      {% for collection in section.settings.collections %}
+        {% render 'collection-card', collection:collection %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<style>
+  @media (max-width: 767px) {}
+  @media (min-width: 768px) and (max-width: 1023px) {}
+  @media (min-width: 1024px) {
+    .featured-collection-list{
+      padding: 6rem 0;
+    }
+
+    .featured-collection-list__header{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .featured-collection-list__content{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+  }
+</style> 
+
 {% schema %}
   {
     "name": "Featured collection-list",
-    "settings": [],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Explore our collections"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "Discover our carefully selected collections, featuring products for every style and need."
+      },
+      {
+        "type": "collection_list",
+        "id": "collections",
+        "label": "Collections",
+        "info": "Select up to 3 collections to feature in this section.",
+        "limit": 3
+      }
+    ],
     "presets": [
       {
         "name": "Featured collection-list"
