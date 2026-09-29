@@ -1,0 +1,108 @@
+<div class="featured-collection">
+  <div class="featured-collection__wrapper page-width">
+    <div class="featured-collection__header">
+      <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+      <p class="featured-collection__description">{{ section.settings.description }}</p>
+    </div>
+    <div class="featured-collection__content">
+      {% for product in section.settings.collection.products limit:4 %}
+        {% render 'product-card'
+          , product: product %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (max-width: 767px) {
+    .featured-collection{
+      padding: 6rem 0;
+    }
+
+    .featured-collection__header{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .featured-collection__content{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: .8rem ;
+      margin-top: 4rem;
+    }
+
+    .featured-collection__description{
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .featured-collection{
+      padding: 6rem 0;
+    }
+
+    .featured-collection__header{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .featured-collection__content{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:1.6rem ;
+      margin-top: 4rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .featured-collection{
+      padding: 6rem 0;
+    }
+
+    .featured-collection__header{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .featured-collection__content{
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap:1.6rem ;
+      margin-top: 4rem;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Featured Collection"
+      }, {
+        "type": "inline_richtext",
+        "id": "description",
+        "label": "Description",
+        "default": "Explore our handpicked selection of products, chosen for quality and style."
+      }, {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection"
+      }
+    ]
+  }
+{% endschema %}
