@@ -8,6 +8,24 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "featured_collection_zw8nUe": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured Collection",
+        "description": "Explore our handpicked selection of products, chosen for quality and style.",
+        "collection": "vegerables"
+      }
+    },
+    "featured_collection_list_Kb73dm": {
+      "type": "featured-collection-list",
+      "name": "Featured collection-list",
+      "settings": {}
+    }
+  },
+  "order": [
+    "featured_collection_zw8nUe",
+    "featured_collection_list_Kb73dm"
+  ]
 }
