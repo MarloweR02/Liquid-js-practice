@@ -21,7 +21,15 @@
     "featured_collection_list_Kb73dm": {
       "type": "featured-collection-list",
       "name": "Featured collection-list",
-      "settings": {}
+      "settings": {
+        "title": "Explore our collections",
+        "description": "Discover our carefully selected collections, featuring products for every style and need.",
+        "collections": [
+          "fish",
+          "meat",
+          "vegerables"
+        ]
+      }
     }
   },
   "order": [
